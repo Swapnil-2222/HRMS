@@ -1,4 +1,4 @@
-entity Employee {
+entity SecurityUser {
     title Title
     firstName String
     middleName String
@@ -1189,32 +1189,32 @@ enum ParameterLookupType {
 }
 
 relationship OneToOne{
-    Employee{employeeDetails} to EmployeeDetails
+    SecurityUser{employeeDetails} to EmployeeDetails
     Organization{address} to Address
-    ExitFormalties{employee} to Employee
+    ExitFormalties{securityUser} to SecurityUser
 }
  
 relationship ManyToOne {
-   	 Education{employee} to Employee
-     WorkExperience{employee} to Employee
-     PolicyDetails{employee} to Employee
-     Documents{employee} to Employee
-     Attendance{employee} to Employee
-     LeaveApplication{employee} to Employee
-     Dependant{employee} to Employee
-     EmployeeSalaryStructure{employee} to Employee
-     EmployeeAllowanceDeduction{employee} to Employee
-     PayBill{employee} to Employee
-     Training{employee} to Employee
-     Bank{employee} to Employee
-     EmployeeTaxExemptions{employee} to Employee
-     Arrears{employee} to Employee
-     Advance{employee} to Employee
-     EmployeeAssetApplication{employee} to Employee
-     EmployeeAdvanceTransaction{employee} to Employee
-     EmployeeSeperation{employee} to Employee
-     OnboardingDetails{employee} to Employee
-     WorkingDays{employee} to Employee
+   	 Education{securityUser} to SecurityUser
+     WorkExperience{securityUser} to SecurityUser
+     PolicyDetails{securityUser} to SecurityUser
+     Documents{securityUser} to SecurityUser
+     Attendance{securityUser} to SecurityUser
+     LeaveApplication{securityUser} to SecurityUser
+     Dependant{securityUser} to SecurityUser
+     EmployeeSalaryStructure{securityUser} to SecurityUser
+     EmployeeAllowanceDeduction{securityUser} to SecurityUser
+     PayBill{securityUser} to SecurityUser
+     Training{securityUser} to SecurityUser
+     Bank{securityUser} to SecurityUser
+     EmployeeTaxExemptions{securityUser} to SecurityUser
+     Arrears{securityUser} to SecurityUser
+     Advance{securityUser} to SecurityUser
+     EmployeeAssetApplication{securityUser} to SecurityUser
+     EmployeeAdvanceTransaction{securityUser} to SecurityUser
+     EmployeeSeperation{securityUser} to SecurityUser
+     OnboardingDetails{securityUser} to SecurityUser
+     WorkingDays{securityUser} to SecurityUser
      
 }
 
@@ -1223,7 +1223,7 @@ relationship ManyToOne{
     Organization{organization} to Organization   
     OrganizationAssets{organization} to Organization
     Bank{organization} to Organization    
-    Employee{organization} to Organization
+    SecurityUser{organization} to Organization
     SalaryComponent{organization} to Organization
     Documents{organization} to Organization
     OrganizationPolicies{organization} to Organization
@@ -1241,19 +1241,19 @@ relationship ManyToOne{
 relationship ManyToOne{ 
 	TaxExemptionSubSection{taxExemptionSection} to TaxExemptionSection
 	TaxExemptionDetails{TaxExemptionSubSection} to TaxExemptionSubSection
-	Employee{incomeTaxSlab} to IncomeTaxSlab
+	SecurityUser{incomeTaxSlab} to IncomeTaxSlab
 }
     
 relationship ManyToMany {
 	TaxExemptionDetails{employeeTaxExemptions} to EmployeeTaxExemptions{taxExemptionDetails}
-    OrganizationPolicies{employee} to Employee{organizationPolicies}
+    OrganizationPolicies{securityUser} to SecurityUser{organizationPolicies}
 }
 
 
 relationship ManyToMany {
     SecurityRole{securityPermission(permissionName)} to SecurityPermission{securityRole(roleName)}
-    Employee{securityPermission(permissionName)} to SecurityPermission{employee(username)}
-    Employee{securityRole(roleName)} to SecurityRole{employee(username)}
+    SecurityUser{securityPermission(permissionName)} to SecurityPermission{securityUser(username)}
+    SecurityUser{securityRole(roleName)} to SecurityRole{securityUser(username)}
   }
       
     
